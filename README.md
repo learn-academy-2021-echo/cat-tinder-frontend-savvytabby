@@ -1,3 +1,100 @@
+Create a new React project
+
+Branch - main (initial commit to the frontend repo)
+
+'''
+$ yarn create react-app cat-tinder-frontend
+'''
+'''
+$ cd cat-tinder-frontend
+'''
+'''
+$ git remote add origin GitHub - learn-academy-2021-echo/cat-tinder-frontend-savvytabby: cat-tinder-frontend-savvytabby created by GitHub Classroom
+'''
+'''
+$ git checkout -b main
+'''
+'''
+$ git add .
+'''
+'''
+$ git commit -m "init commit"
+'''
+'''
+$ cd git push origin main. (even though it says "nothing to commit, working tree clean" we still push it, to get the link)
+'''
+
+
+Frontend structure in MVP
+
+Create Directories
+'''
+$ git checkout -b frontend-structure
+'''
+
+'''
+$
+'''
+
+'''
+$
+'''
+
+'''
+$
+'''
+
+'''
+$
+'''
+
+'''
+$
+'''
+
+'''
+$
+'''
+
+'''
+$
+'''
+
+'''
+$
+'''
+
+'''
+$
+'''
+
+'''
+$
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
