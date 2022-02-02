@@ -1,3 +1,367 @@
+# Create a new React App
+
+```
+$ yarn create react-app cat-tinder-frontend
+$ cd cat-tinder-frontend
+$ git remote add origin GitHub - learn-academy-2021-echo/cat-tinder-frontend-savvytabby: cat-tinder-frontend-savvytabby 
+$ git checkout -b main
+$ git add .
+$ git commit -m 'init commit'
+$ git push origin main  (even though it says "nothing to commit, working tree clean" we still push it, to get the link)
+```
+```
+$ yarn start (start the server) --> open browser type localhost:3000
+```
+
+
+
+# Frontend structure in MVP
+
+## Create Directories
+
+```
+$ git checkout -b frontend-structure
+create three folders : components, pages and assets under src folder
+```
+
+## Create Component Files
+
+```
+create two files : Header.js Footer.js under components folder
+```
+
+## Create Page Files
+
+```
+create six files : Home.js CatIndex.js CatShow.js CatNew.js CatEdit.js NotFound.js under pages folder
+```
+### In the App.js file
+
+```
+import React, { Component } from "react";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import CatEdit from "./pages/CatEdit";
+import CatIndex from "./pages/CatIndex";
+import CatNew from "./pages/CatNew";
+import CatShow from "./pages/CatShow";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+
+export default class App extends Component {
+  render() {
+    return (
+      <>
+        <Header />
+        <Home />
+        <CatIndex />
+        <CatShow />
+        <CatNew />
+        <CatEdit />
+        <NotFound />
+        <Footer />
+      </>
+    );
+  }
+}
+```
+
+## Add Routes
+
+```
+$ yarn add react-router-dom@5.3.0
+```
+```
+import React, { Component } from "react";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import CatEdit from "./pages/CatEdit";
+import CatIndex from "./pages/CatIndex";
+import CatNew from "./pages/CatNew";
+import CatShow from "./pages/CatShow";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom'
+
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/catindex" component={CatIndex} />
+          <Route path="/catshow" component={CatShow} />
+          <Route path="/catnew" component={CatNew} />
+          <Route path="/catedit" component={CatEdit} />
+          <Route component={NotFound} />
+        </Switch>
+        <Footer />
+      </Router>
+    );
+  }
+}
+export default App
+```
+
+## Install bootstrap & reactstrap
+
+```
+$ yarn add bootstrap
+$ yarn add reactstrap
+Add to src/index.js: import 'bootstrap/dist/css/bootstrap.min.css'
+```
+
+## Create mockCats.js
+
+```
+create mockCats.js under src folder
+```
+
+```
+let cats = [
+  {
+    id: 1,
+    name: "Mittens",
+    age: 5,
+    enjoys: "sunshine and warm spots",
+    image:
+      "https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    id: 2,
+    name: "Raisins",
+    age: 4,
+    enjoys: "being queen of the dogs",
+    image:
+      "https://images.unsplash.com/photo-1533743983669-94fa5c4338ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1092&q=80",
+  },
+  {
+    id: 3,
+    name: "Toast",
+    age: 1,
+    enjoys: "getting all the attention",
+    image:
+      "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+];
+export default cats;
+```
+
+#### In the App.js file
+
+```
+import cats from "./mockCats";
+
+class App extends Component{
+  constructor(props){
+    super(props)
+    this.state = {
+      cats: mockCats
+    }
+  }
+```
+## Add Assets Files
+
+```
+add two files: 404error.jpg and catLogo.jpg under assets folder
+```
+
+## Add UI Features
+
+### In the Header.js file
+
+```
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import catLogo from '../assets/catLogo.jpg';
+import '../App.css'
+
+class Header extends Component {
+  render() {
+    return(
+        <>
+          <header>
+            <section className='header'>
+              <section className='catLogo'>
+                <NavLink to = "/" >
+                <img src = {catLogo} alt = "logo for Header" ></img>
+                </NavLink>
+               
+              </section>
+
+              <section className='navbar'>
+                 <div className='nav-links'>
+                   <ul>
+                     <NavLink to = "/catindex" className='navbaritem'>Meet the cat</NavLink>  
+                   </ul>
+                   <ul> 
+                     <NavLink to = "/catnew" className='navbaritem'>Add a cat</NavLink>
+                   </ul>
+                </div>
+                <hr className='header-seperator'/>
+              </section>
+
+            </section>
+
+            {/* <NavLink to = "/" >
+              <img src = {catLogo} alt = "logo for Header" ></img>
+            </NavLink>
+            <div className='nav-links'>
+                <ul>
+                  <NavLink to = "/catindex">Meet the cat</NavLink>  
+                </ul>
+                <ul> 
+                  <NavLink to = "/catnew">Add a cat</NavLink>
+                </ul>
+            </div> */}
+          </header>
+          
+        </>
+    
+    ) 
+  }
+}
+
+export default Header
+```
+
+### In the Footer.js file
+
+```
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import '../App.css'
+
+class Footer extends Component {
+  render() {
+    return(
+        <>
+          <footer>
+          <hr className='footer-seperator'/>  
+          <section className='footer'>
+              <section className='navbar'>
+                 <div className='nav-links'>
+                    <ul>
+                      <NavLink to = "/" className='navbaritem'>Go To Homepage</NavLink>
+                    </ul>
+                    <nav>
+                      <a href="#top" className='navbaritem'>Take me to the top</a>
+                    </nav>
+                </div>
+              </section>
+            </section>
+                {/* <ul>
+                  <NavLink to = "/">Go To Homepage</NavLink>
+                </ul>
+                <nav>
+                  <a href="#top">Take me to the top</a>
+                </nav> */}
+            <hr className='footer-seperator'/>
+          </footer>
+               
+        </>
+    
+    ) 
+  }
+}
+
+export default Footer
+```
+
+### In the NotFound.js file
+
+```
+import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
+import notFoundLogo from '../assets/404error.jpg';
+
+
+class NotFound extends Component {
+  render() {
+
+    return(
+       <>
+         
+          <img src = {notFoundLogo} alt = "logo" ></img>
+          <ul>
+            <NavLink to = "/">Go To Homepage</NavLink>
+          </ul>
+       </>
+       
+    )
+  }
+}
+
+export default NotFound
+```
+
+### In the App.css file
+
+```
+  .header{
+    display: flex;
+    flex: 1;
+    display: inline-flex;
+  }
+  .navbar{
+    display: flex;
+    flex-direction: row;
+  }
+  .navbaritem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+    color: inherit;
+    text-decoration: inherit;
+    text-transform: uppercase;
+    outline: none;
+    font-weight: bolder;
+  }
+
+  .footer{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .nav-links{
+    display: flex;
+    justify-content: center;
+    text-align: center
+  }
+  .header-seperator{
+    flex-grow: 1;
+    border:none;
+    height: 1px;
+    background-color: red;
+    width: 100%;
+  }
+  .footer-seperator{
+    flex-grow: 1;
+    border: none;
+    height: 80px;
+    background-color: black;
+    width: 100%;
+  }
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
