@@ -12,8 +12,7 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
-//import cats from './mockCats';
-import cats from './mockCats.js'
+import cats from './mockCats'
 
 class App extends Component {
 
@@ -23,6 +22,7 @@ class App extends Component {
       cats: cats
     }
   }
+  
   createCat = (cat) => {
     console.log(cat)
   }

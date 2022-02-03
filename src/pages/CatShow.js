@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-
-
 class CatShow extends Component {
   render() {
 
@@ -9,16 +7,14 @@ class CatShow extends Component {
     return(
        <>
           <h2> This is CatShow.js file section </h2>
-        {cat && (
-        <>
-          <p>{cat.name}</p>
-          <p>{cat.age}</p>
-          <p>{cat.enjoys}</p>
-          <img src={cat.image} alt="cute cat img" width="400px"></img>
-        </>)}
-          
-       </>
-       
+          {cat && (
+              <>
+                <p>{cat.name}</p>
+                <p>{cat.age}</p>
+                <p>{cat.enjoys}</p>
+                <img src={cat.image} alt="cute cat img" width="400px"></img>
+              </>)}
+        </>
     )
   }
 }
