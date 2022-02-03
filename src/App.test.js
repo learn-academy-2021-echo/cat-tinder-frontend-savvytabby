@@ -8,6 +8,7 @@ import Home from './pages/Home'
 Enzyme.configure({adapter: new Adapter()})
 
 describe("When App renders", () => {
+  
   it("displays a header and footer", () => {
     //Arrange
     const renderedApp = shallow(<App/>)
