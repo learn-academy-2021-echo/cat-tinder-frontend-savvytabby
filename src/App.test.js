@@ -22,8 +22,7 @@ describe("When App renders", () => {
   it("provideing a route'/' to the home component",() => {
       const renderedApp = shallow(<App/>)
       const renderedHomeRoute = renderedApp.find('[path="/"]')
-      console.log("Rendered Home Debug", renderedHomeRoute.debug());
-      console.log("Rendered Home Props", renderedHomeRoute.props());
+      
       expect(renderedHomeRoute.length).toEqual(1)
       expect(renderedHomeRoute.props().component).toEqual(Home)
   })
