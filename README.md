@@ -3,7 +3,7 @@
 ```
 $ yarn create react-app cat-tinder-frontend
 $ cd cat-tinder-frontend
-$ git remote add origin GitHub - learn-academy-2021-echo/cat-tinder-frontend-savvytabby: cat-tinder-frontend-savvytabby 
+$ git remote add origin GitHub - learn-academy-2021-echo/cat-tinder-frontend-savvytabby: cat-tinder-frontend-savvytabby
 $ git checkout -b main
 $ git add .
 $ git commit -m 'init commit'
@@ -37,7 +37,7 @@ create six files : Home.js CatIndex.js CatShow.js CatNew.js CatEdit.js NotFound.
 ```
 ### In the App.js file
 
-```
+```javascript
 import React, { Component } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -71,7 +71,7 @@ export default class App extends Component {
 ```
 $ yarn add react-router-dom@5.3.0
 ```
-```
+```javascript
 import React, { Component } from "react";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -122,7 +122,7 @@ Add to src/index.js: import 'bootstrap/dist/css/bootstrap.min.css'
 create mockCats.js under src folder
 ```
 
-```
+```javascript
 let cats = [
   {
     id: 1,
@@ -154,7 +154,7 @@ export default cats;
 
 #### In the App.js file
 
-```
+```javascript
 import cats from "./mockCats";
 
 class App extends Component{
@@ -175,7 +175,7 @@ add two files: 404error.jpg and catLogo.jpg under assets folder
 
 ### In the Header.js file
 
-```
+```javascript
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import catLogo from '../assets/catLogo.jpg';
@@ -191,7 +191,7 @@ class Header extends Component {
                 <NavLink to = "/" >
                 <img src = {catLogo} alt = "logo for Header" ></img>
                 </NavLink>
-               
+
               </section>
 
               <section className='navbar'>
@@ -199,7 +199,7 @@ class Header extends Component {
                    <ul>
                      <NavLink to = "/catindex" className='navbaritem'>Meet the cat</NavLink>  
                    </ul>
-                   <ul> 
+                   <ul>
                      <NavLink to = "/catnew" className='navbaritem'>Add a cat</NavLink>
                    </ul>
                 </div>
@@ -215,15 +215,15 @@ class Header extends Component {
                 <ul>
                   <NavLink to = "/catindex">Meet the cat</NavLink>  
                 </ul>
-                <ul> 
+                <ul>
                   <NavLink to = "/catnew">Add a cat</NavLink>
                 </ul>
             </div> */}
           </header>
-          
+
         </>
-    
-    ) 
+
+    )
   }
 }
 
@@ -232,7 +232,7 @@ export default Header
 
 ### In the Footer.js file
 
-```
+```javascript
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../App.css'
@@ -263,10 +263,10 @@ class Footer extends Component {
                 </nav> */}
             <hr className='footer-seperator'/>
           </footer>
-               
+
         </>
-    
-    ) 
+
+    )
   }
 }
 
@@ -275,7 +275,7 @@ export default Footer
 
 ### In the NotFound.js file
 
-```
+```javascript
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import notFoundLogo from '../assets/404error.jpg';
@@ -286,13 +286,13 @@ class NotFound extends Component {
 
     return(
        <>
-         
+
           <img src = {notFoundLogo} alt = "logo" ></img>
           <ul>
             <NavLink to = "/">Go To Homepage</NavLink>
           </ul>
        </>
-       
+
     )
   }
 }
@@ -302,7 +302,8 @@ export default NotFound
 
 ### In the App.css file
 
-```
+```Cascading Style Sheets (css)
+
   .header{
     display: flex;
     flex: 1;
@@ -350,12 +351,122 @@ export default NotFound
   }
 ```
 
+# After you pull down from GitHub (partner first time pull from GitHub)
+```
+$ yarn  (just type yarn)
+```
+# Cat Tinder Testing with Jest and Enzyme
+
+- Install Enzyme
+
+```
+$ yarn add -D enzyme react-test-renderer enzyme-adapter-react-16
+(Then there will be a App.test.js shown up) delete the content in this file
+```
+- Test the file
+```
+$ yarn test
+```
+-App.test.js
+
+```javascript
+import React from 'react'
+import Enzyme, { shallow } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import App from './App'
+import Home from './pages/Home'
+
+//Allows us to utilize the adapter we import in earlier, allowing us to call and render a component.
+Enzyme.configure({adapter: new Adapter()})
+
+describe("When App renders", () => {
+  it("displays a header and footer", () => {
+    //Arrange
+    const renderedApp = shallow(<App/>)
+    //variable that class on shallow which is passed an arguemnt
+    const renderedHeader = renderedApp.find("Header")
+    const renderedFooter = renderedApp.find("Footer")
+    //Assert
+    expect(renderedHeader.length).toEqual(1)
+    expect(renderedFooter.length).toEqual(1)
+  })
+  it("provideing a route'/' to the home component",() => {
+      const renderedApp = shallow(<App/>)
+      const renderedHomeRoute = renderedApp.find('[path="/"]')
+      console.log("Rendered Home Debug", renderedHomeRoute.debug());
+      console.log("Rendered Home Props", renderedHomeRoute.props());
+      expect(renderedHomeRoute.length).toEqual(1)
+      expect(renderedHomeRoute.props().component).toEqual(Home)
+  })
+})
+```
 
 
+-Header.test.js
+```
+import React from 'react'
+import Enzyme, { shallow } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import Header from './Header'
 
+Enzyme.configure({adapter: new Adapter()})
 
+describe("when the header loads...", () => {
 
+  it("display a navlink on the header", () => {
+    //Arrange
+    const renderedHeader = shallow(<Header/>)
+    //variable that class on shallow which is passed an arguemnt
+    const navLinkWrapper = renderedHeader.find("NavLink")
+    //Assert
+    expect(navLinkWrapper.length).toEqual(3)
 
+  })
+  it("display a section on the header", () => {
+    //Arrange
+    const renderedHeader = shallow(<Header/>)
+    //variable that class on shallow which is passed an arguemnt
+    const sectionWrapper = renderedHeader.find("section")
+    //Assert
+    expect(sectionWrapper.length).toEqual(3)
+
+  })
+})
+```
+
+--stretch DRY
+```javascript
+import React from 'react'
+import Enzyme, { shallow } from 'enzyme'
+import Adapter from 'enzyme-adapter-react-16'
+import Header from './Header'
+
+Enzyme.configure({adapter: new Adapter()})
+
+describe("when the header loads...", () => {
+  let header
+  beforeEach(()=>{
+    header = shallow(<Header/>)
+  })
+  it("display a navlink on the header", () => {
+
+    //variable that class on shallow which is passed an arguemnt
+    const navLinkWrapper = header.find("NavLink")
+    //Assert
+    expect(navLinkWrapper.length).toEqual(3)
+
+  })
+  it("display a section on the header", () => {
+    //Arrange
+
+    //variable that class on shallow which is passed an arguemnt
+    const sectionWrapper = header.find("section")
+    //Assert
+    expect(sectionWrapper.length).toEqual(3)
+
+  })
+})
+```
 
 
 
