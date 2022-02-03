@@ -32,20 +32,6 @@ class Header extends Component {
 
             </section>
 
-
-
-
-            {/* <NavLink to = "/" >
-              <img src = {catLogo} alt = "logo for Header" ></img>
-            </NavLink>
-            <div className='nav-links'>
-                <ul>
-                  <NavLink to = "/catindex">Meet the cat</NavLink>  
-                </ul>
-                <ul> 
-                  <NavLink to = "/catnew">Add a cat</NavLink>
-                </ul>
-            </div> */}
           </header>
           
         
