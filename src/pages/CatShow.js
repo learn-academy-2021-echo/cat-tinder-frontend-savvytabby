@@ -9,9 +9,14 @@ class CatShow extends Component {
     return(
        <>
           <h2> This is CatShow.js file section </h2>
-          <p>{this.props.cats && cat.name}</p>
-          <p>{this.props.cats && cat.age}</p>
-          <p>{this.props.cats && cat.enjoys}</p>
+        {cat && (
+        <>
+          <p>{cat.name}</p>
+          <p>{cat.age}</p>
+          <p>{cat.enjoys}</p>
+          <img src={cat.image} alt="cute cat img" width="400px"></img>
+        </>)}
+          
        </>
        
     )
