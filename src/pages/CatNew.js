@@ -38,22 +38,59 @@ class CatNew extends Component {
   render() {
     return(
        <>
-          <h2> This is CatNew.js file section </h2>
+          <h2> Add your cute cat here </h2>
           <Form>
-            <FormGroup>
-              <Label for="name">Name</Label>
-              <Input
-                type="text"
-                name="name"
-                onChange={this.handleChange}
-                value={this.state.newCat.name}
-              />
-            </FormGroup>
-            <Button name="submit" onClick={this.handleSubmit}>
-            Create a New Profile
-          </Button>
-          </Form>
-          {this.state.submitted && <Redirect to="/catindex" />}
+              <FormGroup>
+                <Label for="name">
+                  Cat Name
+                </Label>
+                <Input
+                  name="name"
+                  placeholder="Please input your cat's name here."
+                  type="text"
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Label for="age">
+                  Cat Age
+                </Label>
+                <Input
+                  name="age"
+                  placeholder="Please select your cat's age here."
+                  type="number"
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Label for="enjoys">
+                  Cat's Enjoyable Things
+                </Label>
+                <Input
+                  name="enjoys"
+                  placeholder="Please input your cat's enjoyable things here."
+                  type="text"
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+
+              <FormGroup>
+                <Label for="image">
+                  Cat Profile Picture
+                </Label>
+                <Input
+                  name="image"
+                  placeholder="Please input a url link of your cat's picture."
+                  type="url"
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+
+          <Button onClick={this.handleSubmit} name='submit'> Add Your Cat</Button>
+        </Form>
+        {this.state.submitted && <Redirect to='/catindex'/>}
        </>
        
     )
