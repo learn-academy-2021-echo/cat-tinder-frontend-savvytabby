@@ -20,14 +20,6 @@ class Footer extends Component {
                 </div>
               </section>
             </section>
-
-
-                {/* <ul>
-                  <NavLink to = "/">Go To Homepage</NavLink>
-                </ul>
-                <nav>
-                  <a href="#top">Take me to the top</a>
-                </nav> */}
             <hr className='footer-seperator'/>
           </footer>
 
