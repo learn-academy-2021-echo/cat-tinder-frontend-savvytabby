@@ -9,16 +9,9 @@ class Header extends Component {
         <>
           <header>
             <section className='header'>
-              <section className='catLogo'>
                 <NavLink to = "/" >
-                <img src = {catLogo} alt = "logo for Header" ></img>
-                </NavLink>
-               
-              </section>
-
-              
-
-              <section className='navbar'>
+                <img src = {catLogo} alt = "logo for Header" className="catlogo" ></img>
+                </NavLink>  
                  <div className='nav-links'>
                    <ul>
                      <NavLink to = "/catindex" className='navbaritem'>Meet the cat</NavLink>  
@@ -27,16 +20,9 @@ class Header extends Component {
                      <NavLink to = "/catnew" className='navbaritem'>Add a cat</NavLink>
                    </ul>
                 </div>
-                <hr className='header-seperator'/>
-              </section>
-
             </section>
-
           </header>
-          
-        
         </>
-    
     ) 
   }
 }

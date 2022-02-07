@@ -7,28 +7,20 @@ class Footer extends Component {
     return(
         <>
           <footer>
-          <hr className='footer-seperator'/>  
           <section className='footer'>
-              <section className='navbar'>
                  <div className='nav-links'>
                     <ul>
                       <NavLink to = "/" className='navbaritem'>Go To Homepage</NavLink>
                     </ul>
+                    <br/>
                     <nav>
                       <a href="#top" className='navbaritem'>Take me to the top</a>
                     </nav>
                 </div>
-              </section>
             </section>
-            <hr className='footer-seperator'/>
           </footer>
-
-
-
-        
-               
-        </>
-    
+      
+        </>    
     ) 
   }
 }
