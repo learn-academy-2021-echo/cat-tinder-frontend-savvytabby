@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
+import '../App.css'
 import {
   Form,
   FormGroup,
@@ -88,7 +89,7 @@ class CatNew extends Component {
                 />
               </FormGroup>
 
-          <Button onClick={this.handleSubmit} name='submit'> Add Your Cat</Button>
+          <Button onClick={this.handleSubmit} name='submit' className='button'> Add Your Cat</Button>
         </Form>
         {this.state.submitted && <Redirect to='/catindex'/>}
        </>

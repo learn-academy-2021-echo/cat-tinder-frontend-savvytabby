@@ -1,45 +1,117 @@
-  .header{
-    display: flex;
-    flex: 1;
-    display: inline-flex;
-  }
-  .navbar{
-    display: flex;
-    flex-direction: row;
-  }
-  .navbaritem{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 30px;
-    color: inherit;
-    text-decoration: inherit;
-    text-transform: uppercase;
-    outline: none;
-    font-weight: bolder;
-  }
+.header {
+	display: flex;
+	flex: 1;
+	display: inline-flex;
+}
+.navbar {
+	display: flex;
+	flex-direction: row;
+}
+.navbaritem {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 30px;
+	color: inherit;
+	text-decoration: inherit;
+	text-transform: uppercase;
+	outline: none;
+	font-weight: bolder;
+}
 
-  .footer{
-    display: flex;
-    justify-content: center;
-    text-align: center;
-  }
-  .nav-links{
+/* .footer {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+} */
+
+header {
+	background-color: #fcdfe4;
+	display: flex;
+	justify-content: space-between;
+}
+.catlogo {
+	width: 130px;
+	margin-left: 60px;
+}
+/* .nav-links{
     display: flex;
     justify-content: center;
     text-align: center
-  }
-  .header-seperator{
-    flex-grow: 1;
-    border:none;
-    height: 1px;
-    background-color: red;
-    width: 100%;
-  }
-  .footer-seperator{
-    flex-grow: 1;
-    border: none;
-    height: 80px;
-    background-color: black;
-    width: 100%;
-  }
+  } */
+.nav-links {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	padding-right: 50px;
+}
+.header-seperator {
+	flex-grow: 1;
+	border: none;
+	height: 1px;
+	background-color: red;
+	width: 100%;
+}
+.footer-seperator {
+	flex-grow: 1;
+	border: none;
+	height: 80px;
+	background-color: black;
+	width: 100%;
+}
+
+.homepic {
+	height: 500px;
+	border-radius: 50%;
+	border: 3px solid black;
+}
+
+.homebody {
+	text-align: center;
+	margin: 3rem;
+	height: 110vh;
+}
+
+/* CatNew.js --> form */
+form {
+	margin-left: 20%;
+	margin-right: 20%;
+}
+input {
+	text-align: center;
+}
+div.form-group {
+	margin-bottom: 15px;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+}
+/* button {
+ 
+    justify-content: center; 
+    align-items: center;
+    margin: auto
+} */
+footer {
+	background-color: #fcdfe4;
+	position: absolute;
+	justify-content: space-between;
+	text-align: center;
+	bottom: 0;
+	width: 100%;
+}
+.navbar {
+	display: flex;
+	flex-direction: row;
+}
+.navbaritem {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	color: inherit;
+	text-decoration: inherit;
+	text-transform: uppercase;
+	outline: none;
+	font-weight: bolder;
+}
